@@ -1,0 +1,118 @@
+<?xml version = "1.0"?>
+<openerp>
+    <data>
+        <act_window id="action_kpi" name="Project" res_model="project.info" view_mode="tree,form"/>
+        <act_window id="action_project" name="Project" res_model="project.info" view_mode="tree,form"/>
+        <act_window id="action_tasks" name="Tasks" res_model="project.tasks" view_mode="tree,form"/>
+        <act_window id="action_objective" name="Objectives" res_model="objective.info" view_mode="tree,form"/>
+        <act_window id="action_sop" name="SOP" res_model="task.sop" view_mode="tree,form"/>
+
+        <menuitem id="menu_kpi" name="KPI" action="action_kpi" />
+
+        <menuitem id="menu_project" name="Project" parent="menu_kpi" action="action_project"/>
+
+
+        <record id="view_form_project_info" model="ir.ui.view">
+                    <field name="name">Project Form</field>
+                    <field name="model">project.info</field>
+                    <field name="arch" type="xml">
+                     <form string="Project">
+                      <group name="group_top">
+                       <group name="group_left">
+                          <field name="proj_name"/>
+                           <field name="proj_date"/>
+                             <field name="proj_dated"/>
+                        </group>
+                        </group>
+
+                        <field name= "proj_ids" nolabel = "1" colspan = "4" mode= "tree">
+                                <tree string="task tree">
+                                    <field name='task_name'/>
+                                    <field name='status'/>
+                                    <field name='task_id'/>
+                                </tree>
+                         </field>
+                      </form>
+
+                     </field>
+        </record>
+
+        <record id="view_tree_project_info" model="ir.ui.view">
+            <field name="name">Project Tree</field>
+            <field name="model">project.info</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="proj_name"/>
+                    <field name="proj_date"/>
+                    <field name="proj_dated"/>
+               </tree>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_task" name="Tasks" parent="menu_project" action="action_tasks"/>
+
+
+         <record id="view_form_project_tasks" model="ir.ui.view">
+                      <field name="name">Task Form</field>
+                      <field name="model">project.tasks</field>
+                      <field name="arch" type="xml">
+                                 <form string="Task">
+                                     <group name="group_top">
+                                      <group name="group_left">
+                                      <field name="task_name"/>
+                                      <field name="status"/>
+                                      <field name="task_id"/>
+                                      </group>
+                                     </group>
+                                 </form>
+                      </field>
+         </record>
+         <record id="view_tree_project_info" model="ir.ui.view">
+            <field name="name">Project Tree</field>
+            <field name="model">project.tasks</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="task_name"/>
+                    <field name="status"/>
+                    <field name="task_id"/>
+               </tree>
+            </field>
+        </record>
+
+        <menuitem id="menu_objective" name="Objectives" parent="menu_task" action="action_objective"/>
+
+
+         <record id="view_form_tasks_objective" model="ir.ui.view">
+                      <field name="name">Objective Form</field>
+                      <field name="model">objective.info</field>
+                      <field name="arch" type="xml">
+
+                                 <form string="Objectives">
+
+                                     <group name="group_top">
+                                      <field name="obj_name"/>
+                                      <field name="target"/>
+                                      <field name="measure"/>
+
+                                      <group name="group_left">
+                                      <field name="obj_id"/>
+                                      <field name="emp_id"/>
+
+
+                                     </group>
+                                      </group>
+
+
+                                 </form>
+
+
+                      </field>
+          </record>
+
+
+        <menuitem id="menu_sop" name="SOPs" parent="menu_task" action="action_sop"/>
+
+
+</data>
+</openerp>
