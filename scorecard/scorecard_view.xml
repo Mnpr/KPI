@@ -1,0 +1,222 @@
+<?xml version = "1.0"?>
+<openerp>
+    <data>
+
+		<act_window id="action_sc" name="Open Scorecard" res_model="scorecard.info" view_mode="tree,form"/>
+
+        <act_window id="action_scorecard" name="Open Scorecard" res_model="scorecard.info" view_mode="tree,form"/>
+
+
+
+		<menuitem id="menu_sc" name="Open Scorecard" action="action_sc"/>
+
+        <menuitem id="menu_scorecard" name="Open Scorecards" parent="menu_sc" action="action_scorecard"/>
+
+        <!--act_window id="action_objective" name="Objective" res_model="objective.info" view_mode="tree,form"/>
+
+        <menuitem id="menu_objective" name="Objective" parent="menu_scorecard" action="action_objective"/-->
+        <!--menuitem id="menu_sop" name="Initiatives" parent="menu_scorecard" action="action_sop"/>
+        <act_window id="action_sop" name="Sops" res_model="objecive.sop" view_mode="tree,form"/-->
+
+
+
+
+
+
+
+		<record id="view_form_scorecard" model="ir.ui.view">
+                    <field name="name">Scorecard Form</field>
+                    <field name="model">scorecard.info</field>
+                    <field name="arch" type="xml">
+						<form string="Scorecard">
+							<sheet>
+							<group name="group_top">
+								
+								<h1>
+								<field name="sc_name" placeholder="Title of Scorecard "/>
+								</h1>
+								
+							<group name="group_left">
+
+							</group>
+							<group name="group_right">
+
+								<field name="sc_date"/>
+								<field name="department"/>
+								<field name="superviser"/>
+                                <!--field name="kpi_id"/-->
+								
+							</group>
+							</group>
+
+                                <!--field name= "sc_id" nolabel = "1" colspan = "4" mode= "tree">
+                                <tree string="objective tree">
+                                    <field name='obj_name'/>
+                                    <field name='target'/>
+                                    <field name='measure'/>
+                                        <field name= "obj_id">
+                                            <tree string="sop tree">
+                                                <field name="step_no"/>
+                                                <field name='steps'/>
+                                            </tree>
+                                        </field>
+                                </tree>
+                                </field-->
+                                <field name="kpi_id" nolabel = "1" colspan = "4" mode= "tree">
+                                <tree string="kpi tree">
+                                    <field name='performance_indicator'/>
+									<field name="measure_kpi" />
+									<field name="current_situation"/>
+									<field name="gap"/>
+									<field name="kpi"/>
+                                        <!--field name= "obj_id">
+                                            <tree string="sop tree">
+                                                <field name="step_no"/>
+                                                <field name='steps'/>
+                                            </tree>
+                                        </field-->
+                                </tree>
+                                </field>
+							</sheet>
+						</form>
+
+                    </field>
+        </record>
+        <record id="view_form_kpi_info" model="ir.ui.view">
+                    <field name="name">KPI Form</field>
+                    <field name="model">individual.kpi</field>
+                    <field name="arch" type="xml">
+						<form string="kpi">
+							<sheet>
+                                <h2 align="center">Key Performance Indicator</h2>
+							<group name="group_top">
+
+
+
+							<!--h2>
+								<field name="obj_name"  placeholder=" Objective "/>
+							</h2-->
+
+							<group name="group_left">
+
+
+								<field name="performance_indicator"/>
+								<field name="measure_kpi" />
+								<field name="benchmark_source"/>s
+
+							</group>
+
+							<group name="group_right">
+
+								<field name="current_situation"/>
+
+								<field name="gap"/>
+								<field name="kpi"/>
+
+							</group>
+							</group>
+                             <!--notebook>
+                                  <page string="Performance Indicators">
+
+                                      <field name="performance_indicator"/>
+                                    <field name="indicators">
+                                    <tree string="Key Indicators">
+                                        <field name="performance_indicator"/>
+                                        <field name="knowledge"/>
+                                    </tree>
+                                    </field>
+                                  </page>
+                             </notebook-->
+
+							   <!--field name= "kpi_id" nolabel = "1" colspan = "4" mode= "tree">
+                                <tree string='knowledge'>
+                                    <field name='skills'/>
+                                    <field name='creativity'/>
+                                </tree>
+                         </field-->
+                         </sheet>
+						</form>
+
+                    </field>
+        </record>
+
+
+
+
+
+        <!--record id="view_form_objective_info" model="ir.ui.view">
+                    <field name="name">Objective Form</field>
+                    <field name="model">objective.info</field>
+                    <field name="arch" type="xml">
+						<form string="Objectives">
+							<sheet>
+													
+							<group name="group_top">	
+								
+							<h2>
+								<field name="obj_name"  placeholder=" Objective "/>
+							</h2>
+																
+							<group name="group_left">
+
+                                <field name="sop_obj"/>
+								<br/>
+								<hr align="left" width="45%" size="5"/>
+								<field name="target"/>
+								<field name="measure"/>
+
+
+							</group>
+							
+							<group name="group_right">
+								
+                                <field name="emp_id"/>
+								
+							</group>
+							</group>
+							
+							   <field name= "obj_id" nolabel = "1" colspan = "4" mode= "tree">
+                                <tree string="sop tree">
+                                    <field name='step_no'>
+                                    <field name='steps'/>
+                                </tree>
+                         </field>
+                         </sheet>
+						</form>
+
+                    </field>
+        </record-->
+		<!--record id="view_form_sop_info" model="ir.ui.view">
+                    <field name="name">sop Form</field>
+                    <field name="model">objecive.sop</field>
+                    <field name="arch" type="xml">
+						<form string="Initiatives">						
+							<sheet>						
+							<group name="group_top">								
+							<group name="group_left">
+								<field name="step_no"/>
+							</group>
+							
+							<group name="group_right">			
+								<field name="steps"/>
+							</group>
+							</group>
+                       </sheet>
+						</form>
+
+                    </field>
+        </record>
+         <record id="view_tree_objective_info" model="ir.ui.view">
+            <field name="name">Objective Tree</field>
+            <field name="model">objecive.sop</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="step_no"/>
+                    <field name="steps"/>
+
+               </tree>
+            </field>
+        </record-->
+     </data>
+</openerp>

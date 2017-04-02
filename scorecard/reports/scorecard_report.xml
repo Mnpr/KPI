@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Custom report.-->
+<odoo>
+<data>
+    <report id="action__report" string="Scorecard" model="scorecard.info" report_type="qweb-pdf"    name="scorecard.report_scorecard_template"/>
+
+    <template id="report_scorecard_template">
+        <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+        <t t-call="report.external_layout">
+
+            <div class="page">
+
+                <h3 align='center'> <span t-field="o.sc_name"/></h3>
+                <br/>
+                <br/>
+                <p align="right">
+                    Department : <span t-field="o.department"/>
+                </p>
+                <p align="left">
+                    Date : <span t-field="o.sc_date" t-options ='{"format": "dd MM yyyy"}'/>
+                </p>
+                <p align="left">
+                    Superviser : <span t-field="o.superviser"/>
+                </p>
+
+                <table border="1" style="width:100%">
+                     <hr width="100%" align="center"/>
+                    <tr>
+                        <!--th style="margin-left:30px;"></th-->
+                        <th style="margin-left:30px;">Drivers</th>
+                        <th style="margin-left:30px;">Measures</th>
+                        <th style="margin-left:30px;">Benchmarks</th>
+                        <th style="margin-left:30px;">Current Situation</th>
+                        <th style="margin-left:30px;">Benchmark-gap</th>
+                        <th style="margin-left:30px;">KPI</th>
+                    </tr>
+
+                    <t t-foreach="docs.kpi_id" t-as="p">
+                    <tr>
+                    <td>
+                    <span t-field="p.performance_indicator"/>
+                    </td>
+                    <td>
+
+
+
+                    <span t-field="p.measure_kpi"/>
+
+                    </td>
+
+                    <td>
+                    <span t-field="p.benchmark_source"/>
+                    </td>
+                    <td>
+                    <span t-field="p.gap"/>
+                    </td>
+                    <td>
+                    <span t-field="p.kpi"/>
+                    </td>
+
+                    </tr>
+                    </t>
+
+                </table>
+
+
+
+            </div>
+        </t>
+        </t>
+        </t>
+    </template>
+
+</data>
+</odoo>
+
+ <!--table width="100%" border="2">
+                     <hr width="33%" align="center"/>
+                    <tr>
+                        <th style="margin-left:30px;"></th>
+                        <th style="margin-left:30px;">Drivers</th>
+                        <th style="margin-left:30px;">Measures</th>
+                        <th style="margin-left:30px;">Benchmarks</th>
+                        <th style="margin-left:30px;">Current Situation</th>
+                        <th style="margin-left:30px;">Benchmark-gap</th>
+                        <th style="margin-left:30px;">KPI</th>
+                    </tr>
+
+                    <t t-foreach="docs.kpi_id" t-as="p">
+                    <tr>
+                    <td>
+                    <span t-field="p.performance_indicator"/>
+                    </td>
+                    <td>
+
+                    <span t-field="p.measure_kpi"/>
+
+                    </td>
+
+                    <td>
+                    <span t-field="p.benchmark_source"/>
+                    </td>
+                    <td>
+                    <t t-foreach="o.obj_id" t-as="s">
+
+                    	 <span t-field="s.steps"/>
+                        <br/><br/>
+					</t>
+                          <hr/>
+                    </td>
+
+                    </tr>
+                    </t>
+
+                </table-->
