@@ -6,4 +6,4 @@ instruction:
 -copy into the folder of extra-addons or custom-addons or any folder
 - .odoo/odoo-bin -d <your_database> --addons-path="<your_folder>,odoo/addons" --save
 - install the module form apps
-- thats all !!!!
+- Enjoy !!!!
